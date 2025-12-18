@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resumen de la solicitud</title>
+</head>
+<body>
+
+<h1>Resumen de la solicitud de ayuda</h1>
+<label>Entidad:</label><span th:text="' '+ ${solicitud.entidadSolicitante}"></span>
+<br>
+<label>CIF:</label><span th:text="' '+ ${solicitud.cifNif}"></span>
+<br>
+<label>Programa:</label><span th:text="' '+ ${programaEuropeo.nombre}"></span>
+<br>
+<label>Persona de contacto:</label><span th:text="' '+ ${solicitud.personaContacto} + ' (' + ${solicitud.emailContacto} + ')'"></span>
+<hr>
+<label>Proyecto:</label><span th:text="' '+ ${solicitud.tituloProyecto}"></span>
+<br>
+<label>Importe Total:</label><span th:text="' '+ ${solicitud.importeTotalProyecto} + ' EUR'"></span>
+<br>
+<label>Ayuda solicitada:</label><span th:text="' '+ ${solicitud.importeAyudaSolicitada} + ' EUR'"></span>
+<br>
+<label>Fecha de inicio:</label><span th:text="' '+ ${#temporals.format(solicitud.fechaInicioPrevista, 'dd/MM/yyyy')}"></span>
+<br>
+<label>Duración prevista:</label><span th:text="' '+ ${solicitud.duracionMeses} + ' meses'"></span>
+<br>
+
+<form method="post" th:action="@{/fondos/final}">
+    <button type="submit">Confirmar solicitud</button>
+</form>
+</body>
+</html>

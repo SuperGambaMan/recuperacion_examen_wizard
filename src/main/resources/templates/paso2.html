@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Paso 2</title>
+</head>
+<body>
+<h2>PASO 2 de 2 – Datos del proyecto e importe de la ayuda</h2>
+<hr>
+<form method="post" th:action="@{/fondos/paso2}" th:object="${paso2DTO}">
+    <h3>Datos del proyecto</h3>
+    <label>Título del proyecto: </label>
+    <input type="text" th:field="*{tituloProyecto}" id="tituloProyecto">
+    <div th:if="${#fields.hasErrors('tituloProyecto')}" th:errors="*{tituloProyecto}"></div>
+    <br>
+    <h3>Datos económicos</h3>
+    <label>Importe total del proyecto: </label>
+    <input type="number" th:field="*{importeTotalProyecto}" id="importeTotalProyecto" required> EUR
+    <div th:if="${#fields.hasErrors('importeTotalProyecto')}" th:errors="*{importeTotalProyecto}"></div>
+
+    <br>
+
+    <label>Importe de ayuda solicitada:</label>
+    <input type="number" th:field="*{importeAyudaSolicitada}" id="importeAyudaSolicitada" required> EUR
+
+    <br>
+    <h3>Planificación</h3>
+    <label>Fecha de inicio prevista: </label>
+    <input type="datetime-local" th:field="*{fechaInicioPrevista}" id="fechaInicioPrevista">
+    <div th:if="${#fields.hasErrors('fechaInicioPrevista')}" th:errors="*{fechaInicioPrevista}"></div> (dd/mm/aa)
+
+    <br>
+
+    <label>Duración estimada: </label>
+    <input type="text" th:field="*{duracionMeses}" id="duracionMeses"> meses
+    <div th:if="${#fields.hasErrors('duracionMeses')}" th:errors="*{duracionMeses}"></div>
+
+    <br>
+    <a th:href="@{/fondos/paso1}"><button type="button">Volver al paso 1</button></a>
+    <button>Revisar y enviar solicitud</button>
+</form>
+</body>
+</html>

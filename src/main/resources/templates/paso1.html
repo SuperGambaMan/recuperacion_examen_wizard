@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Paso 1</title>
+</head>
+<body>
+    <h2>PASO 1 de 2 – Datos de la entidad y del programa europeo</h2>
+    <hr>
+    <form method="post" th:action="@{/fondos/paso1}" th:object="${paso1DTO}">
+        <label>Elija el programa europeo </label>
+        <select th:field="*{programaId}" id="programaId">
+            <option value="">Selecciona el programa europeo</option>
+            <option th:each="programa : ${programas}" th:value="${programa.id}" th:text="${programa.nombre}"></option>
+        </select>
+        <div th:if="${#fields.hasErrors('programaId')}" th:errors="*{programaId}"></div>
+
+        <br>
+
+        <label>Entidad solicitante: </label>
+        <input type="text" th:field="*{entidadSolicitante}" id="entidadSolicitante" required>
+
+        <br>
+
+        <label>CIF / NIF de la entidad: </label>
+        <input type="text" th:field="*{cifNif}" id="cifNif">
+        <div th:if="${#fields.hasErrors('cifNif')}" th:errors="*{cifNif}"></div>
+
+        <br>
+
+        <label>País:</label>
+        <input type="text" th:field="*{pais}" id="pais">
+        <div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+
+
+
+        <label>Región:</label>
+        <input type="text" th:field="*{region}" id="region">
+        <div th:if="${#fields.hasErrors('region')}" th:errors="*{region}"></div>
+
+        <br>
+
+        <label>Persona de contacto: </label>
+        <input type="text" th:field="*{personaContacto}" id="personaContacto">
+        <div th:if="${#fields.hasErrors('personaContacto')}" th:errors="*{personaContacto}"></div>
+
+        <br>
+        <label>Correo electrónico: </label>
+        <input type="text" th:field="*{emailContacto}" id="emailContacto">
+        <div th:if="${#fields.hasErrors('emailContacto')}" th:errors="*{emailContacto}"></div>
+
+        <br>
+
+        <button>Siguiente</button>
+    </form>
+</body>
+</html>
